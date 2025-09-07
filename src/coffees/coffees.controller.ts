@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 
 @Controller('coffees')
 export class CoffeesController {
@@ -9,5 +9,9 @@ export class CoffeesController {
   @Get(':id') // Dynamic route parameter
   findOne(@Param('id') id: string): string {
     return `This action returns coffee #${id}`;
+  }
+  @Post()
+  create(@Body() body) {
+    return body; // Return the entire request body
   }
 }
